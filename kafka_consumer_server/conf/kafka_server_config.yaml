@@ -8,7 +8,7 @@ user_cache_kafka:
 # 用户权限缓存
 user_redis:
   Addr: "localhost:6379"
-  Password: "123456"
+  Password: ""
 
 # /opt/kafka/bin
 # ./kafka-topics.sh --list --bootstrap-server localhost:9092

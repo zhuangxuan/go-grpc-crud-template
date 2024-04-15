@@ -10,7 +10,7 @@ crud_db:
   Database: crud_list
   Port: 3306
   UserName: root
-  Password: 123456
+  Password: root
   Host: 127.0.0.1 #host.docker.internal #
   Charset: utf8mb4
 

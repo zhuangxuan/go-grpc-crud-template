@@ -4,11 +4,12 @@ package mysql_db
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
-	"time"
 )
 
 func ConnectToDatabase(dbName string) (*gorm.DB, error) {
@@ -23,6 +24,7 @@ func ConnectToDatabase(dbName string) (*gorm.DB, error) {
 		viper.GetString(dbName+".Database"),
 		viper.GetString(dbName+".Charset"))
 
+	fmt.Println(dsn)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true, //表名单数
