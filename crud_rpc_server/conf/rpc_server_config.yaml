@@ -7,7 +7,7 @@ server:
 # 用于增删改查的数据库
 crud_db:
   DriverName: mysql
-  Database: crud-list
+  Database: crud_list
   Port: 3306
   UserName: root
   Password: 123456
