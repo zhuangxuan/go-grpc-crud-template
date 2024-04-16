@@ -4,12 +4,13 @@ import (
 	"container/heap"
 	"context"
 	"fmt"
-	"github.com/go-redis/redis/v8"
-	"github.com/segmentio/kafka-go"
-	"github.com/spf13/viper"
 	"go_crud/utils/kafka_mq"
 	"go_crud/utils/redis_cache"
 	"log"
+
+	"github.com/go-redis/redis/v8"
+	"github.com/segmentio/kafka-go"
+	"github.com/spf13/viper"
 )
 
 // Message 结构体用来解析Kafka消息中的JSON
@@ -26,7 +27,8 @@ var TaskHeap DelayedTaskHeap
 func Init() {
 	var err error
 
-	viper.AddConfigPath("./conf/")
+	//viper.AddConfigPath("./conf/")
+	viper.AddConfigPath("./kafka_consumer_server/conf")
 	viper.SetConfigName("kafka_server_config")
 	viper.SetConfigType("yaml")
 
