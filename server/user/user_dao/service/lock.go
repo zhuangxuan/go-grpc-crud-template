@@ -1,8 +1,10 @@
 package service
 
 import (
-	"github.com/go-redsync/redsync/v4"
+	"log"
 	"time"
+
+	"github.com/go-redsync/redsync/v4"
 )
 
 func GetRedLock(name string) *redsync.Mutex {
@@ -20,7 +22,7 @@ func ContinueLock(lock *redsync.Mutex) {
 		// 尝试延时锁
 		if ok, err := lock.Extend(); ok != true {
 			if err != nil {
-				//log.Println("延时锁失败:", err)
+				log.Println("延时锁失败:", err)
 			}
 			break
 		}

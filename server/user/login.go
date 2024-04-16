@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"go_crud/server/user/user_dao"
@@ -16,6 +17,7 @@ type LoginForm struct {
 
 func LoginPost(r *gin.RouterGroup) {
 	r.POST("/login", func(c *gin.Context) {
+		fmt.Println("login")
 		loginData := LoginForm{}
 		err := c.ShouldBindJSON(&loginData)
 		if err != nil { //数据错

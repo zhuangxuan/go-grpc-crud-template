@@ -2,10 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
-	"github.com/spf13/viper"
-	"go.uber.org/zap"
 	"go_crud/logger"
 	"go_crud/server"
 	"go_crud/server/crud_rpc"
@@ -16,6 +12,12 @@ import (
 	userService "go_crud/server/user/user_dao/service"
 	"go_crud/server/utils"
 	"log"
+
+	"github.com/gin-contrib/cors"
+
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
+	"go.uber.org/zap"
 )
 
 func main() {
@@ -53,8 +55,8 @@ func main() {
 	user.ChangePwdPost(userRouter)
 	user.GetPubKey(userRouter)
 
-	//crudRpcRouter := r.Group("/api/crud")
-	crudRpcRouter := r.Group("/api/crud", midware.CheckLogin("crud"))
+	crudRpcRouter := r.Group("/api/crud")
+	//crudRpcRouter := r.Group("/api/crud", midware.CheckLogin("crud"))
 	crudRpcRouter.Use(gin.Logger(), gin.Recovery())
 	crud_rpc.AddPOST(crudRpcRouter)
 	crud_rpc.QueryGET(crudRpcRouter)

@@ -3,11 +3,12 @@ package etcd_center
 import (
 	"context"
 	"fmt"
-	"github.com/spf13/viper"
-	clientv3 "go.etcd.io/etcd/client/v3"
 	"log"
 	"math/rand"
 	"time"
+
+	"github.com/spf13/viper"
+	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
 func NewEtcdClient(etcdName string) *clientv3.Client {
@@ -31,8 +32,10 @@ func GetAddrFromEtcd(clientName string, etcdClient *clientv3.Client) string {
 	cancel()
 	if err != nil {
 		log.Printf("failed to get service address from etcd: %v \n", err)
+		return err.Error()
 	}
 
+	// 这里如果获取不到就是nil，所以这里会崩溃，在上面已经给拦截返回了
 	if len(resp.Kvs) == 0 {
 		log.Println("service address not found in etcd")
 	}
