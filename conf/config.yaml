@@ -21,7 +21,7 @@ user_redis:
 # 分布式锁
 lock_redis:
   Addr: "localhost:6379"
-  Password: "123456"
+  Password: ""
 
 # 用户权限缓存处理的消息队列
 user_cache_kafka:
