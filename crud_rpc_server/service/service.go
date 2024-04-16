@@ -2,11 +2,12 @@ package service
 
 import (
 	"fmt"
-	"github.com/spf13/viper"
-	clientv3 "go.etcd.io/etcd/client/v3"
 	"go_crud/crud_rpc_server/crud_pb"
 	"go_crud/utils/etcd_center"
 	"go_crud/utils/mysql_db"
+
+	"github.com/spf13/viper"
+	clientv3 "go.etcd.io/etcd/client/v3"
 	"gorm.io/gorm"
 )
 
@@ -20,7 +21,7 @@ type GrpcServer struct {
 func Init() {
 	var err error
 
-	viper.AddConfigPath("./conf/")
+	viper.AddConfigPath("./crud_rpc_server/conf")
 	viper.SetConfigName("rpc_server_config")
 	viper.SetConfigType("yaml")
 
