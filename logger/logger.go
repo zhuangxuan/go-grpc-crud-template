@@ -23,6 +23,7 @@ func InitLogger(level zapcore.Level) (*zap.Logger, error) {
 
 	// 创建一个文件夹路径
 	dirPath := fmt.Sprintf("./logger/logs/%d-%02d/%02d", year, month, day)
+	fmt.Println("dirPath:", dirPath)
 	err := os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		return nil, err

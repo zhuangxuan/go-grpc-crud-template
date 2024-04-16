@@ -2,6 +2,7 @@ package etcd_center
 
 import (
 	"context"
+	"fmt"
 	"github.com/spf13/viper"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"log"
@@ -17,6 +18,7 @@ func NewEtcdClient(etcdName string) *clientv3.Client {
 	if err != nil {
 		log.Printf("Error creating etcd client: %v \n", err)
 	}
+	fmt.Println("etcd client created")
 	return cli
 }
 
@@ -46,6 +48,8 @@ func GetAddrFromEtcd(clientName string, etcdClient *clientv3.Client) string {
 }
 
 func RegisterAddrToEtcd(serviceName string, serviceAddr string, cli *clientv3.Client) {
+
+	fmt.Println("registering service to etcd")
 
 	// 注册服务到etcd
 	leaseResp, err := cli.Grant(context.Background(), 10)
